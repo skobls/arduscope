@@ -1,0 +1,7 @@
+\begin{tikzpicture}[>=latex]
+	\node[draw,minimum height=1cm] (adc) at (0,0) {ADC};
+  \draw[<-] (adc.west) -- +(-1.5,0)
+    node[midway,above,align=center] {analog \\ data};
+  \draw[->] (adc.east) -- +(1.5,0)
+    node[midway,above,align=center] {digital \\ data};
+\end{tikzpicture}
