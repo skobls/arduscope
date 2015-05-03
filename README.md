@@ -1,3 +1,3 @@
 # arduscope
-An oscilloscope, probably arduino-based, which is to be built in terms of the Complex Embedded Systems lab training.
+An arduino-based oscilloscope, which we are building in the Complex Embedded Systems lab training.
 
