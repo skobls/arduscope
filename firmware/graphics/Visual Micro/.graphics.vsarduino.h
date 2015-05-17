@@ -23,3 +23,6 @@ extern "C" void __cxa_pure_virtual() {;}
 #include "c:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\standard\pins_arduino.h" 
 #include "c:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\arduino.h"
 #include <graphics.ino>
+#include <bar.cpp>
+#include <bar.h>
+#include <colors.h>

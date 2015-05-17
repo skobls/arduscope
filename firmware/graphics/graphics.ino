@@ -3,17 +3,20 @@
 #include <fonts.h>
 #include <BMPheader.h>
 #include <SPI.h>
-#include <MI0283QT2.h>
 
+#include <MI0283QT2.h>
 MI0283QT2 Display;
 
-#define WHITE 0xFFFF
-#define BLACK 0x0000
+#include "bar.h"
+BarClass Bar(300,55,10);
+
+#include "colors.h"
 
 void setup()
 {
     // initializes the screen controller
     Display.begin();
+    Bar.refresh();
     
     // Use Print::write(str)
     Display.setTextSize(2);
@@ -21,7 +24,7 @@ void setup()
     Display.setTextColor(BLACK,WHITE);
     Display.fillScreen(WHITE);
     Display.write("Hello, World!");
-    
+
     // Use GraphicsLib::drawText(x,y,str,fg_col,bg,col,size)
     Display.drawText(5,5,"TL",BLACK,WHITE,1);
     Display.drawText(320-5-16,  // (screen width) - (margin) - (text width)
@@ -29,9 +32,27 @@ void setup()
     Display.drawText(5,240-5-8, // (screen height) - margin) - (text height)
                      "BL",BLACK,WHITE,1);
     Display.drawText(320-5-16,240-5-8,"BR",BLACK,WHITE,1);
+    
+    Display.setTextSize(1);
 }
 
 void loop()
 {
+    static uint8_t i;
+    Bar.setState(i++);
+    delay(10);
     
+    static uint16_t j = 0x8000;
+    if (0 == j)
+    {
+        j = 0x8000;
+    }
+    static char colorstring[8]={0,0,0,0,0,0,0,0};
+    if (0 == i)
+    {
+        sprintf((char*)(&colorstring),"0x%04X",j);
+        Display.drawText(50,200,(char*)(&colorstring),BLACK,WHITE,1);
+        Display.fillRect(120,190,28,28,j);
+        j>>=1;
+    }
 }

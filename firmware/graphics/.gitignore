@@ -1,1 +1,4 @@
 /graphics.atsuo
+*.o
+*.d
+/*/core.a
