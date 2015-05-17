@@ -245,7 +245,28 @@
     <Folder Include="Visual Micro\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Decimal.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Decimal.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="GUIcolors.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="plotSpace.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="plotSpace.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Visual Micro\.graphics.vsarduino.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="VoltageBar.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="VoltageBar.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
