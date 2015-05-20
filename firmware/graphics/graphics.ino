@@ -48,21 +48,21 @@ void setup()
 
 void loop()
 {
-    //static uint8_t i;
-    //Bar.setState(i++);
-    //delay(10);
-    //
-    //static uint16_t j = 0x8000;
-    //if (0 == j)
-    //{
-        //j = 0x8000;
-    //}
-    //static char colorstring[8]={0,0,0,0,0,0,0,0};
-    //if (0 == i)
-    //{
-        //sprintf((char*)(&colorstring),"0x%04X",j);
-        //Display.drawText(50,200,(char*)(&colorstring),BLACK,WHITE,1);
-        //Display.fillRect(120,190,28,28,j);
-        //j>>=1;
-    //}
+    static uint8_t i;
+    Bar.setState(i++);
+    delay(10);
+    
+    static uint16_t j = 0x8000;
+    if (0 == j)
+    {
+        j = 0x8000;
+    }
+    static char colorstring[8]={0,0,0,0,0,0,0,0};
+    if (0 == i)
+    {
+        sprintf((char*)(&colorstring),"0x%04X",j);
+        Display.drawText(50,200,(char*)(&colorstring),BLACK,WHITE,1);
+        Display.fillRect(120,190,28,28,j);
+        j>>=1;
+    }
 }

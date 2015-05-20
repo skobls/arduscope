@@ -21,7 +21,7 @@ extern "C" void __cxa_pure_virtual() {;}
 
 #include "c:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\mega\pins_arduino.h" 
 #include "c:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino\arduino.h"
-#include <graphics.ino>
+#include <Prototype.ino>
 #include <Decimal.cpp>
 #include <Decimal.h>
 #include <GUIcolors.h>
