@@ -19,50 +19,59 @@ BarClass Bar(300,55,10);
 
 VoltageBarClass VBar;
 
+#include "GuiButton.h"
+uint8_t counter = 0;
+void showCounter(void){
+    Display.drawInteger(100,10,counter,10,RGB(255,255,255),RGB(0,0,0),1);
+}
+// to use an anonymous function, you have to enable C++11 in arduino:
+// http://stackoverflow.com/questions/16224746/how-to-use-c11-to-program-the-arduino
+GuiButton foo(100,100,50,60, "Button1",
+              [](void) -> void{counter++;showCounter();});
+//// One can of course do the same stuff in the old way, without any anonymous functions, 
+//void on_foo_press(void){
+//    counter++;showCounter();}
+//GuiButton foo(100,100,50,60, "Button1",on_foo_press);
+
 void setup()
 {
-    //char foo[8];
-    //sprintf((char*)(foo),"%4.2f V",5.0);
-    // initializes the screen controller
     Display.begin();
+    Display.touchStartCal(); // without this command the touchscreen driver won't work properly.
+       // However the calibration data can be stored in EEPROM. Need to consider it later.
     Bar.refresh();
     VBar.begin();
+    foo.refresh();
+    showCounter();
     
-    // Use Print::write(str)
-    //Display.setTextSize(2);
-    //Display.setCursor(320/2-8*12,240/2-8*2);
-    //Display.setTextColor(BLACK,WHITE);
-    //Display.fillScreen(WHITE);
-    //Display.write(foo);
-//
-    //// Use GraphicsLib::drawText(x,y,str,fg_col,bg,col,size)
-    //Display.drawText(5,5,"TL",BLACK,WHITE,1);
-    //Display.drawText(320-5-16,  // (screen width) - (margin) - (text width)
-                     //5,"TR",BLACK,WHITE,1);
-    //Display.drawText(5,240-5-8, // (screen height) - margin) - (text height)
-                     //"BL",BLACK,WHITE,1);
-    //Display.drawText(320-5-16,240-5-8,"BR",BLACK,WHITE,1);
-    //
-    //Display.setTextSize(1);
 }
 
 void loop()
 {
-    //static uint8_t i;
-    //Bar.setState(i++);
-    //delay(10);
-    //
-    //static uint16_t j = 0x8000;
-    //if (0 == j)
-    //{
-        //j = 0x8000;
-    //}
-    //static char colorstring[8]={0,0,0,0,0,0,0,0};
-    //if (0 == i)
-    //{
-        //sprintf((char*)(&colorstring),"0x%04X",j);
-        //Display.drawText(50,200,(char*)(&colorstring),BLACK,WHITE,1);
-        //Display.fillRect(120,190,28,28,j);
-        //j>>=1;
-    //}
+    static uint8_t i;
+    Bar.setState(i++);
+    delay(10);
+    
+    static uint16_t j = 0x8000;
+    if (0 == j)
+    {
+        j = 0x8000;
+    }
+    static char colorstring[8]={0,0,0,0,0,0,0,0};
+    if (0 == i)
+    {
+        sprintf((char*)(&colorstring),"0x%04X",j);
+        Display.drawText(50,200,(char*)(&colorstring),BLACK,WHITE,1);
+        Display.fillRect(120,190,28,28,j);
+        j>>=1;
+    }
+    
+    // Only this code relates to the pressable button. If there are multiple GUIbuttons,
+    // you should pass the touchEvent to all of them. Each button will decide if the event
+    // concerns it.
+    Display.touchRead();
+    static touchpanelEvent_t e;
+    e.x = Display.touchX();
+    e.y = Display.touchY();
+    e.pressure = Display.touchZ();
+    foo.onTouchpanelEvent(e);
 }
