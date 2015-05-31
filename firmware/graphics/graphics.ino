@@ -27,7 +27,9 @@ void showCounter(void){
 // to use an anonymous function, you have to enable C++11 in arduino:
 // http://stackoverflow.com/questions/16224746/how-to-use-c11-to-program-the-arduino
 GuiButton foo(100,100,50,60, "Button1",
-              [](void) -> void{counter++;showCounter();});
+              [](void) -> void{counter++;showCounter();},
+              EMPTY_EventHandler,
+              [](void) -> void{counter=0;showCounter();});
 //// One can of course do the same stuff in the old way, without any anonymous functions, 
 //void on_foo_press(void){
 //    counter++;showCounter();}

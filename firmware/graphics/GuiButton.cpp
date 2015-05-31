@@ -15,36 +15,63 @@ extern MI0283QT2 Display;   // TODO: consider replacing with `GraphicsLib.h`
 //      wraparounds for event handlers
 //---------------------------------------------------------------------
 GuiButton* pBtn;
-inline void GuiButton::wrapOnPress(void)
-{
-    pBtn->setColor(pBtn->bg_color_on);
-    if (pBtn->onPress != EMPTY_EventHandler )
-    {
-        pBtn->onPress();
-    } 
-}
-inline void GuiButton::wrapOnRelease(void)
-{
-    pBtn->setColor(pBtn->bg_color_off);
-    if (pBtn->onRelease != EMPTY_EventHandler)
-    {
-        pBtn->onRelease();
-    }
-}
+//inline void GuiButton::wrapOnPress(void)
+//{
+    //pBtn->setColor(pBtn->bg_color_on);
+    ////if (pBtn->onPress != EMPTY_EventHandler )
+    ////{
+        ////pBtn->onPress();
+    ////} 
+    //CALL_IF_NONEMPTY(pBtn->onPress);
+//}
+//inline void GuiButton::wrapOnRelease(void)
+//{
+    //pBtn->setColor(pBtn->bg_color_off);
+    ////if (pBtn->onRelease != EMPTY_EventHandler)
+    ////{
+        ////pBtn->onRelease();
+    ////}
+  //#ifndef BUTTON_FSM_LONGPRESS
+    //CALL_IF_NONEMPTY(pBtn->onRelease);
+  //#else
+    //CALL_IF_NONEMPTY(pBtn->onEnteringReleasedState);
+  //#endif
+//}
 
 //---------------------------------------------------------------------
 // constructor
-GuiButton::GuiButton(uint16_t _top, 
-                     uint16_t _left, 
-                     uint16_t _height, 
-                     uint16_t _width, 
-                     char*    _label,
-                     EventHandler _on_press /*= EMPTY_EventHandler*/,
-                     EventHandler _on_release /*= EMPTY_EventHandler*/, 
-                     uint16_t _color_released,
-                     uint16_t _color_pressed):
-            Widget(_top,_left,_height,_width),
-            btn(wrapOnPress,wrapOnRelease)
+GuiButton::GuiButton(uint16_t _top
+                    ,uint16_t _left
+                    ,uint16_t _height
+                    ,uint16_t _width
+                    ,char*    _label
+                    ,EventHandler _on_press /*= EMPTY_EventHandler*/
+                    ,EventHandler _on_release /*= EMPTY_EventHandler*/
+                #ifdef BUTTON_FSM_LONGPRESS
+                    ,EventHandler _on_long_press /*= EMPTY_EventHandler*/ 
+                    ,EventHandler _on_long_release /*= EMPTY_EventHandler*/ 
+                  #ifdef BUTTON_FSM_REPEATITIONS
+                    ,EventHandler _on_repeatition /*= EMPTY_EventHandler*/ 
+                  #endif // BUTTON_FSM_REPEATITIONS
+                    ,EventHandler _on_entering_released_state /*= EMPTY_EventHandler*/
+                #endif // BUTTON_FSM_LONGPRESS
+                    ,uint16_t _color_released
+                    ,uint16_t _color_pressed):
+            Widget(_top,_left,_height,_width), // pass some parameters to the base class constructor
+            btn( // pass some parameters to the internal variable's constructor
+                 [](void) -> void{pBtn->setColor(pBtn->bg_color_on); CALL_IF_NONEMPTY(pBtn->onPress);}
+              #ifndef BUTTON_FSM_LONGPRESS
+                ,[](void) -> void{pBtn->setColor(pBtn->bg_color_off);CALL_IF_NONEMPTY(pBtn->onRelease);}
+              #else
+                ,_on_release
+                ,_on_long_press
+                ,_on_long_release
+                ,[](void) -> void{pBtn->setColor(pBtn->bg_color_off);CALL_IF_NONEMPTY(pBtn->onEnteringReleasedState);}
+               #ifdef BUTTON_FSM_REPEATITIONS
+                ,_on_repeatition 
+               #endif // BUTTON_FSM_REPEATITIONS
+              #endif // BUTTON_FSM_LONGPRESS
+                )
 {
     bg_color_on = _color_pressed;
     bg_color_off = _color_released;
@@ -52,6 +79,14 @@ GuiButton::GuiButton(uint16_t _top,
     label = _label;
     onPress = _on_press;
     onRelease = _on_release;
+  #ifdef BUTTON_FSM_LONGPRESS
+    onLongPress = _on_long_press;
+    onLongRelease = _on_long_release;
+    onEnteringReleasedState = _on_entering_released_state;
+   #ifdef BUTTON_FSM_REPEATITIONS
+    onRepeatition = _on_repeatition;
+   #endif // BUTTON_FSM_REPEATITIONS
+  #endif // BUTTON_FSM_LONGPRESS
 }
 
 void GuiButton::onTouchpanelEvent(touchpanelEvent_t e)
@@ -63,12 +98,15 @@ void GuiButton::onTouchpanelEvent(touchpanelEvent_t e)
     int len = strlen(tmp);
     Display.fillRect(3+len*8,230,(15-len)*8,8,0x0000);
     Display.drawText(3,230,tmp,0xFFFF,0x0000,1);
-	if ((dx < width)     // if the event happened inside this widget
-      &&(dy < height))
-	{
+	//if ((dx < width)     // if the event happened inside this widget
+      //&&(dy < height)
+      //&&(e.pressure>20))
+	//{
         pBtn = this;
-        btn.FSM(e.pressure>20);
-	}
+        btn.FSM( ((dx < width)     // if the event happened inside this widget
+                &&(dy < height)
+                &&(e.pressure>20))?1:0);
+	//}
 }
 
 void GuiButton::setColor(uint16_t _color)

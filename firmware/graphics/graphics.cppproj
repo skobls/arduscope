@@ -5,7 +5,7 @@
     <ProjectVersion>6.2</ProjectVersion>
     <ToolchainName>com.Atmel.AVRGCC8.CPP</ToolchainName>
     <ProjectGuid>{07b459b4-8d76-4638-bc6d-a459ba2d616b}</ProjectGuid>
-    <avrdevice>atmega328p</avrdevice>
+    <avrdevice>atmega2560</avrdevice>
     <avrdeviceseries>none</avrdeviceseries>
     <OutputType>Executable</OutputType>
     <Language>CPP</Language>
@@ -62,9 +62,7 @@
   <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
   <avrgcc.compiler.symbols.DefSymbols>
     <ListValues>
-      <Value>__AVR_ATmega328p__</Value>
-      <Value>__AVR_ATmega328P__</Value>
-      <Value>_VMDEBUG=1</Value>
+      <Value>__AVR_ATmega2560__</Value>
       <Value>ARDUINO=164</Value>
       <Value>ARDUINO_MAIN</Value>
       <Value>F_CPU=16000000L</Value>
@@ -89,7 +87,7 @@
       <Value>c:/Users/skobls/Documents/Arduino/libraries/digitalWriteFast/utility</Value>
       <Value>c:/Users/skobls/Documents/Arduino/libraries/digitalWriteFast</Value>
       <Value>../../graphics</Value>
-      <Value>c:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/standard</Value>
+      <Value>c:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/mega</Value>
       <Value>c:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
@@ -102,9 +100,7 @@
   <avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>
   <avrgcccpp.compiler.symbols.DefSymbols>
     <ListValues>
-      <Value>__AVR_ATmega328p__</Value>
-      <Value>__AVR_ATmega328P__</Value>
-      <Value>_VMDEBUG=1</Value>
+      <Value>__AVR_ATmega2560__</Value>
       <Value>ARDUINO=164</Value>
       <Value>ARDUINO_MAIN</Value>
       <Value>F_CPU=16000000L</Value>
@@ -129,7 +125,7 @@
       <Value>c:/Users/skobls/Documents/Arduino/libraries/digitalWriteFast/utility</Value>
       <Value>c:/Users/skobls/Documents/Arduino/libraries/digitalWriteFast</Value>
       <Value>../../graphics</Value>
-      <Value>c:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/standard</Value>
+      <Value>c:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/mega</Value>
       <Value>c:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino</Value>
     </ListValues>
   </avrgcccpp.compiler.directories.IncludePaths>
@@ -141,7 +137,12 @@
   <avrgcccpp.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcccpp.assembler.debugging.DebugLevel>
 </AvrGccCpp>
     </ToolchainSettings>
-    <VMSETTING_IncludePaths>c:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino;c:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/standard;../../graphics;c:/Program Files (x86)/Arduino/libraries;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries;C:/Program Files (x86)/Visual Micro/Visual Micro for Arduino/Micro Platforms/default/debuggers;c:/Users/skobls/Documents/Arduino/libraries;c:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/;c:/Program Files (x86)/Arduino/hardware/tools/avr//avr/include/avr/;c:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.8.1/include;c:/Users/skobls/Documents/Arduino/libraries/digitalWriteFast;c:/Users/skobls/Documents/Arduino/libraries/digitalWriteFast/utility;c:/Users/skobls/Documents/Arduino/libraries/GraphicsLib;c:/Users/skobls/Documents/Arduino/libraries/GraphicsLib/utility;c:/Users/skobls/Documents/Arduino/libraries/MI0283QT2;c:/Users/skobls/Documents/Arduino/libraries/MI0283QT2/utility;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/utility;</VMSETTING_IncludePaths>
+    <VMSETTING_IncludePaths>c:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino;c:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/standard;../../graphics;c:/Program Files (x86)/Arduino/libraries;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries;C:/Program Files (x86)/Visual Micro/Visual Micro for Arduino/Micro Platforms/default/debuggers;c:/Users/skobls/Documents/Arduino/libraries;c:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/;c:/Program Files (x86)/Arduino/hardware/tools/avr//avr/include/avr/;c:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.8.1/include;c:/Users/skobls/Documents/Arduino/libraries/digitalWriteFast;c:/Users/skobls/Documents/Arduino/libraries/digitalWriteFast/utility;c:/Users/skobls/Documents/Arduino/libraries/GraphicsLib;c:/Users/skobls/Documents/Arduino/libraries/GraphicsLib/utility;c:/Users/skobls/Documents/Arduino/libraries/MI0283QT2;c:/Users/skobls/Documents/Arduino/libraries/MI0283QT2/utility;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/utility;c:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/mega;</VMSETTING_IncludePaths>
+    <VisualMicroSettings>
+      <VisualMicroSettings xmlns="">
+        <arduino.upload.port>COM4</arduino.upload.port>
+      </VisualMicroSettings>
+    </VisualMicroSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <ToolchainSettings>
@@ -155,9 +156,7 @@
   <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
   <avrgcc.compiler.symbols.DefSymbols>
     <ListValues>
-      <Value>__AVR_ATmega328p__</Value>
-      <Value>__AVR_ATmega328P__</Value>
-      <Value>_VMDEBUG=1</Value>
+      <Value>__AVR_ATmega2560__</Value>
       <Value>ARDUINO=164</Value>
       <Value>ARDUINO_MAIN</Value>
       <Value>F_CPU=16000000L</Value>
@@ -182,7 +181,7 @@
       <Value>c:/Users/skobls/Documents/Arduino/libraries/digitalWriteFast/utility</Value>
       <Value>c:/Users/skobls/Documents/Arduino/libraries/digitalWriteFast</Value>
       <Value>../../graphics</Value>
-      <Value>c:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/standard</Value>
+      <Value>c:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/mega</Value>
       <Value>c:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino</Value>
     </ListValues>
   </avrgcc.compiler.directories.IncludePaths>
@@ -195,9 +194,7 @@
   <avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>
   <avrgcccpp.compiler.symbols.DefSymbols>
     <ListValues>
-      <Value>__AVR_ATmega328p__</Value>
-      <Value>__AVR_ATmega328P__</Value>
-      <Value>_VMDEBUG=1</Value>
+      <Value>__AVR_ATmega2560__</Value>
       <Value>ARDUINO=164</Value>
       <Value>ARDUINO_MAIN</Value>
       <Value>F_CPU=16000000L</Value>
@@ -222,7 +219,7 @@
       <Value>c:/Users/skobls/Documents/Arduino/libraries/digitalWriteFast/utility</Value>
       <Value>c:/Users/skobls/Documents/Arduino/libraries/digitalWriteFast</Value>
       <Value>../../graphics</Value>
-      <Value>c:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/standard</Value>
+      <Value>c:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/mega</Value>
       <Value>c:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino</Value>
     </ListValues>
   </avrgcccpp.compiler.directories.IncludePaths>
@@ -234,7 +231,12 @@
   <avrgcccpp.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcccpp.assembler.debugging.DebugLevel>
 </AvrGccCpp>
     </ToolchainSettings>
-    <VMSETTING_IncludePaths>c:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino;c:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/standard;../../graphics;c:/Program Files (x86)/Arduino/libraries;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries;C:/Program Files (x86)/Visual Micro/Visual Micro for Arduino/Micro Platforms/default/debuggers;c:/Users/skobls/Documents/Arduino/libraries;c:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/;c:/Program Files (x86)/Arduino/hardware/tools/avr//avr/include/avr/;c:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.8.1/include;c:/Users/skobls/Documents/Arduino/libraries/digitalWriteFast;c:/Users/skobls/Documents/Arduino/libraries/digitalWriteFast/utility;c:/Users/skobls/Documents/Arduino/libraries/GraphicsLib;c:/Users/skobls/Documents/Arduino/libraries/GraphicsLib/utility;c:/Users/skobls/Documents/Arduino/libraries/MI0283QT2;c:/Users/skobls/Documents/Arduino/libraries/MI0283QT2/utility;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/utility;</VMSETTING_IncludePaths>
+    <VMSETTING_IncludePaths>c:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino;c:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/standard;../../graphics;c:/Program Files (x86)/Arduino/libraries;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries;C:/Program Files (x86)/Visual Micro/Visual Micro for Arduino/Micro Platforms/default/debuggers;c:/Users/skobls/Documents/Arduino/libraries;c:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/;c:/Program Files (x86)/Arduino/hardware/tools/avr//avr/include/avr/;c:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.8.1/include;c:/Users/skobls/Documents/Arduino/libraries/digitalWriteFast;c:/Users/skobls/Documents/Arduino/libraries/digitalWriteFast/utility;c:/Users/skobls/Documents/Arduino/libraries/GraphicsLib;c:/Users/skobls/Documents/Arduino/libraries/GraphicsLib/utility;c:/Users/skobls/Documents/Arduino/libraries/MI0283QT2;c:/Users/skobls/Documents/Arduino/libraries/MI0283QT2/utility;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/utility;c:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/mega;</VMSETTING_IncludePaths>
+    <VisualMicroSettings>
+      <VisualMicroSettings xmlns="">
+        <arduino.upload.port>COM4</arduino.upload.port>
+      </VisualMicroSettings>
+    </VisualMicroSettings>
   </PropertyGroup>
   <ItemGroup>
     <None Include="graphics.ino">
@@ -245,10 +247,31 @@
     <Folder Include="Visual Micro\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="bar.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="bar.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ButtonFSM.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ButtonFSM.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="colors.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Decimal.cpp">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Decimal.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="GuiButton.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="GuiButton.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="GUIcolors.h">
@@ -267,6 +290,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="VoltageBar.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Widget.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Widget.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
