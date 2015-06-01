@@ -12,7 +12,7 @@
 #include "Widget.h"
 #include "ButtonFSM.h"
 
-class GuiButton:Widget
+class GuiButton: public Widget
 {
 //variables
 protected:
@@ -47,7 +47,7 @@ public:
              ,uint16_t _color_released = RGB(0,255,0)
              ,uint16_t _color_pressed = RGB(0,0,255)); // TODO: add `#ifdef` stuff
     void refresh();
-    void onTouchpanelEvent(touchpanelEvent_t e);
+    void onTouchpanelEvent(touchpanelEvent_t &e);
     void setColor(uint16_t _color);
 protected:
 private:

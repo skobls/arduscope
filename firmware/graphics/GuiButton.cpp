@@ -89,22 +89,22 @@ GuiButton::GuiButton(uint16_t _top
   #endif // BUTTON_FSM_LONGPRESS
 }
 
-void GuiButton::onTouchpanelEvent(touchpanelEvent_t e)
+void GuiButton::onTouchpanelEvent(touchpanelEvent_t &e)
 {
-    uint16_t dx = e.x-left;
-    uint16_t dy = e.y-top;
-    char tmp[15];
-    sprintf(tmp,"%u,%u,%u",dx,dy,e.pressure);
-    int len = strlen(tmp);
-    Display.fillRect(3+len*8,230,(15-len)*8,8,0x0000);
-    Display.drawText(3,230,tmp,0xFFFF,0x0000,1);
+    //uint16_t dx = e.x-left;
+    //uint16_t dy = e.y-top;
+    //char tmp[15];
+    //sprintf(tmp,"%u,%u,%u",dx,dy,e.pressure);
+    //int len = strlen(tmp);
+    //Display.fillRect(3+len*8,230,(15-len)*8,8,0x0000);
+    //Display.drawText(3,230,tmp,0xFFFF,0x0000,1);
 	//if ((dx < width)     // if the event happened inside this widget
       //&&(dy < height)
       //&&(e.pressure>20))
 	//{
         pBtn = this;
-        btn.FSM( ((dx < width)     // if the event happened inside this widget
-                &&(dy < height)
+        btn.FSM( (((e.x-left) < width)     // if the event happened inside this widget
+                &&((e.y-top) < height)
                 &&(e.pressure>20))?1:0);
 	//}
 }

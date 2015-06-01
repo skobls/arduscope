@@ -9,9 +9,6 @@
 #include <MI0283QT2.h>
 MI0283QT2 Display;
 
-#include "bar.h"
-BarClass Bar(300,55,10);
-
 #include "VoltageBar.h"
 #include "plotSpace.h"
 
@@ -30,42 +27,33 @@ GuiButton foo(100,100,50,60, "Button1",
               [](void) -> void{counter++;showCounter();},
               EMPTY_EventHandler,
               [](void) -> void{counter=0;showCounter();});
-//// One can of course do the same stuff in the old way, without any anonymous functions, 
+//// One can of course do the same stuff in the old way, without any anonymous functions: 
 //void on_foo_press(void){
 //    counter++;showCounter();}
 //GuiButton foo(100,100,50,60, "Button1",on_foo_press);
+
+
+Widget* activeWidgets[] = {&foo};
+#define N_Widgets (sizeof(activeWidgets)/sizeof(Widget*))
+Widget* pfoo = &foo;
 
 void setup()
 {
     Display.begin();
     Display.touchStartCal(); // without this command the touchscreen driver won't work properly.
        // However the calibration data can be stored in EEPROM. Need to consider it later.
-    Bar.refresh();
+    //Bar.refresh();
     VBar.begin();
-    foo.refresh();
     showCounter();
-    
+    for(uint8_t i=0;i<N_Widgets;i++)
+    {
+        activeWidgets[i]->refresh();
+    }
 }
 
 void loop()
 {
-    static uint8_t i;
-    Bar.setState(i++);
     delay(10);
-    
-    static uint16_t j = 0x8000;
-    if (0 == j)
-    {
-        j = 0x8000;
-    }
-    static char colorstring[8]={0,0,0,0,0,0,0,0};
-    if (0 == i)
-    {
-        sprintf((char*)(&colorstring),"0x%04X",j);
-        Display.drawText(50,200,(char*)(&colorstring),BLACK,WHITE,1);
-        Display.fillRect(120,190,28,28,j);
-        j>>=1;
-    }
     
     // Only this code relates to the pressable button. If there are multiple GUIbuttons,
     // you should pass the touchEvent to all of them. Each button will decide if the event
@@ -75,5 +63,8 @@ void loop()
     e.x = Display.touchX();
     e.y = Display.touchY();
     e.pressure = Display.touchZ();
-    foo.onTouchpanelEvent(e);
+    for(uint8_t i=0;i<N_Widgets;i++)
+    {
+        activeWidgets[i]->onTouchpanelEvent(e);
+    }
 }
