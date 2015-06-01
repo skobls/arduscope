@@ -1,4 +1,3 @@
-//#include "auxiliary/Decimal.h"
 #include <digitalWriteFast.h>
 #include <GraphicsLib.h>
 #include <fonts.h>
@@ -8,12 +7,14 @@
 #include <MI0283QT2.h>
 MI0283QT2 Display;
 
-
 #include "VoltageBar.h"
-//#include "plotSpace.h"
-
-
 VoltageBarClass VBar;
+
+#include "TimeBar.h"
+TimeBarClass TBar;
+
+#include "plotSpace.h"
+PlotSpaceClass PSpace;
 
 #include "GuiButton.h"
 uint8_t counter = 0;
@@ -22,7 +23,7 @@ void showCounter(void){
 }
 // to use an anonymous function, you have to enable C++11 in arduino:
 // http://stackoverflow.com/questions/16224746/how-to-use-c11-to-program-the-arduino
-GuiButton foo(100,100,50,60, "Button1",
+GuiButton foo(0,200,6*8,40, "Btn1",
               [](void) -> void{counter++;showCounter();},
               EMPTY_EventHandler,
               [](void) -> void{counter=0;showCounter();});
@@ -32,9 +33,8 @@ GuiButton foo(100,100,50,60, "Button1",
 //GuiButton foo(100,100,50,60, "Button1",on_foo_press);
 
 
-Widget* activeWidgets[] = {&foo};
+Widget* activeWidgets[] = {&foo,&TBar,&VBar,&PSpace};
 #define N_Widgets (sizeof(activeWidgets)/sizeof(Widget*))
-Widget* pfoo = &foo;
 
 void setup()
 {
@@ -42,7 +42,8 @@ void setup()
     Display.touchStartCal(); // without this command the touchscreen driver won't work properly.
        // However the calibration data can be stored in EEPROM. Need to consider it later.
     //Bar.refresh();
-    VBar.refresh();
+    //VBar.refresh();
+    //TBar.refresh();
     showCounter();
     for(uint8_t i=0;i<N_Widgets;i++)
     {

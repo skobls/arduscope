@@ -280,6 +280,12 @@
     <Compile Include="plotSpace.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="TimeBar.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="TimeBar.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Visual Micro\.main.vsarduino.h">
       <SubType>compile</SubType>
     </Compile>
