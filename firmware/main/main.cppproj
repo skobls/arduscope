@@ -259,9 +259,6 @@
     <Compile Include="ButtonFSM.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="colors.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="Decimal.cpp">
       <SubType>compile</SubType>
     </Compile>

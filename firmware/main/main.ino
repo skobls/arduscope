@@ -1,5 +1,4 @@
-#include "Decimal.h"
-#include "VoltageBar.h"
+//#include "auxiliary/Decimal.h"
 #include <digitalWriteFast.h>
 #include <GraphicsLib.h>
 #include <fonts.h>
@@ -9,10 +8,10 @@
 #include <MI0283QT2.h>
 MI0283QT2 Display;
 
-#include "VoltageBar.h"
-#include "plotSpace.h"
 
-#include "colors.h"
+#include "VoltageBar.h"
+//#include "plotSpace.h"
+
 
 VoltageBarClass VBar;
 
@@ -43,7 +42,7 @@ void setup()
     Display.touchStartCal(); // without this command the touchscreen driver won't work properly.
        // However the calibration data can be stored in EEPROM. Need to consider it later.
     //Bar.refresh();
-    VBar.begin();
+    VBar.refresh();
     showCounter();
     for(uint8_t i=0;i<N_Widgets;i++)
     {
