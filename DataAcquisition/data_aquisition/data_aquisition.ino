@@ -1,6 +1,6 @@
 #include "ADC_COnfiguration.h"
 
-
+ADC_ConfigurationClass inst1;
 
 void setup()
 {

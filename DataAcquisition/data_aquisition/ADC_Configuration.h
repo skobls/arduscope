@@ -32,6 +32,7 @@
 // Define modes
 #define SINGLE_SHOT_MODE 0
 #define FREE_RUNING_INTERRUPT_MODE 1
+#define FREE_RUNING_AUTO_TRIGGER_MODE 2
 
 //Define prescalar value
 #define DIV_FACTOR_2	1
@@ -65,11 +66,11 @@ class ADC_ConfigurationClass
 	
 	//AADCSRA – ADC Control and Status Register A
 	uint8_t prescalar_selection;
-	boolean inttrerupt_enable; 
-	boolean inttrerupt_flag;
-	boolean auto_trg_enable;
-	boolean	start_enable;
-	boolean adc_enable;
+	uint8_t interrupt_enable; 
+	uint8_t interrupt_flag;
+	uint8_t auto_trg_enable;
+	uint8_t	start_enable;
+	uint8_t adc_enable;
 	
 	//ADCSRB – ADC Control and Status Register B
 	uint8_t triger_source;	
@@ -81,7 +82,12 @@ class ADC_ConfigurationClass
 	void change_mode(uint8_t _mode);
 	void refresh_mode();
 	void set_intt_mode();
-	
+	void configure_single_shot();
+	void configure_freerun_intrerrupt_mode();
+	void configure_freerun_auto_trigger_mode();
+	void reset_ADC_register();
+	void Start_Conversion();
+	//read functions
 };
 
 extern ADC_ConfigurationClass ADC_Configuration;
