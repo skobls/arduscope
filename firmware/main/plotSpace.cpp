@@ -55,7 +55,7 @@ void PlotSpaceClass::drawHorizontalGridline(uint16_t ypos)
     Display.drawStop();
 }
 
-void PlotSpaceClass::addDataPoint(uint16_t data)
+void PlotSpaceClass::addDataPoint(uint16_t data,uint16_t color/*=RGB(255,0,0)*/)
 {
 	if (cursor_position>width)
     {   clear();    }        
@@ -64,7 +64,7 @@ void PlotSpaceClass::addDataPoint(uint16_t data)
     uint32_t interpolatedData = (((uint32_t)data)*192)/1024;
     
     
-    Display.drawPixel(left+cursor_position++,height - 4 - interpolatedData,GUI_PLOT_DATA);
+    Display.drawPixel(left+cursor_position++,height - 4 - interpolatedData,color);
     if (cursor_position>width)
     {
         CALL_IF_NONEMPTY(onScreenFull);

@@ -19,7 +19,7 @@ class PlotSpaceClass : public Widget
     void refresh();
     void clear();
     void onTouchpanelEvent(touchpanelEvent_t &e);
-    void addDataPoint(uint16_t data);
+    void addDataPoint(uint16_t data,uint16_t color=RGB(255,0,0));
  private:
     EventHandler onScreenFull;
     uint16_t cursor_position;
