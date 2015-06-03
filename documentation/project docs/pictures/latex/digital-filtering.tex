@@ -1,0 +1,13 @@
+\tikzsetnextfilename{digital-filtering}
+\begin{tikzpicture}
+	\timing[scale=3] at (0,0) {5L5H2L};
+  \node[anchor=north] at(1.5,0) {\emph{do nothing}};
+  \node[anchor=north] at(5.5,0) {\emph{do nothing}};
+  \node[anchor=north] (n1) at(7.3,-0.5) {\emph{do nothing}};
+  \draw[->] (n1) -- +(0,0.7);
+  
+  \node[anchor=north] (n2) at(3.65,-0.5) {\large do some action};
+  \draw (3.65,0.4) ellipse[x radius=1mm,y radius=5mm];
+  \draw[->] (n2) -- +(0,0.6);
+
+\end{tikzpicture}
