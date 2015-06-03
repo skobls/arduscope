@@ -19,7 +19,8 @@ extern MI0283QT2 Display;// should be defined elsewhere, probably in `main.ino`
 VoltageBarClass::VoltageBarClass()
     :Widget(VBAR_XPOS,VBAR_YPOS,VBAR_WIDTH,VBAR_HEIGHT),
      _Vl(0,0),
-     _Vh(5,0)
+     _Vh(5,0),
+     _Vdiv(1,25)
 {}
 
 void VoltageBarClass::refresh(void)
@@ -27,6 +28,7 @@ void VoltageBarClass::refresh(void)
 	Display.fillRect(left,top,width,height,GUI_BG);
     refreshHighVoltage();
     refreshLowVoltage();
+    refreshDivVoltage();
 }
 
 //void VoltageBarClass::begin(void) __attribute__ ((alias("_ZN15VoltageBarClass7refreshEv"))); //
@@ -53,6 +55,22 @@ void VoltageBarClass::refreshLowVoltage(void)
 	                 GUI_TEXT,
 	                 GUI_BG,
 	                 1);
+}
+
+void VoltageBarClass::refreshDivVoltage(void)
+{
+	char strBuf[12];
+	//sprintf(&(strBuf[_Vdiv.ToString(&strBuf[0])])," V/div");
+	_Vdiv.ToString(strBuf);
+	Display.drawText(left+width-VBAR_MARGIN-CHAR_WIDTH*strlen((char*)(strBuf)),
+	                 height/2-CHAR_HEIGHT-1,
+	                 (char*)(&strBuf),
+	                 GUI_TEXT,
+	                 GUI_BG,
+	                 1);
+    Display.drawText(left+width-VBAR_MARGIN-5*8,
+                     height/2+CHAR_HEIGHT+1,
+                     "V/div",GUI_TEXT,GUI_BG,1);
 }
 
 

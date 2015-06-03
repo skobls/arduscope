@@ -23,7 +23,8 @@ class VoltageBarClass : public Widget
  private:
     void refreshHighVoltage(void);
     void refreshLowVoltage(void);
-    Decimal _Vh, _Vl;
+    void refreshDivVoltage(void);
+    Decimal _Vh, _Vl, _Vdiv;
 };
 
 

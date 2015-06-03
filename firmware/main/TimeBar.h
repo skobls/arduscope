@@ -23,7 +23,8 @@ class TimeBarClass : public Widget
  private:
     void refreshRightTime(void);
     void refreshLeftTime(void);
-    Decimal _Tr, _Tl;
+    void refreshDivTime(void);
+    Decimal _Tr, _Tl,_Tdiv;
 };
 
 
