@@ -139,7 +139,7 @@
     </ToolchainSettings>
     <VMSETTING_IncludePaths>c:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino;c:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/standard;../../main;c:/Program Files (x86)/Arduino/libraries;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries;C:/Program Files (x86)/Visual Micro/Visual Micro for Arduino/Micro Platforms/default/debuggers;c:/Users/skobls/Documents/Arduino/libraries;c:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/;c:/Program Files (x86)/Arduino/hardware/tools/avr//avr/include/avr/;c:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.8.1/include;c:/Users/skobls/Documents/Arduino/libraries/digitalWriteFast;c:/Users/skobls/Documents/Arduino/libraries/digitalWriteFast/utility;c:/Users/skobls/Documents/Arduino/libraries/GraphicsLib;c:/Users/skobls/Documents/Arduino/libraries/GraphicsLib/utility;c:/Users/skobls/Documents/Arduino/libraries/MI0283QT2;c:/Users/skobls/Documents/Arduino/libraries/MI0283QT2/utility;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/utility;c:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/mega;</VMSETTING_IncludePaths>
     <VisualMicroSettings>
-      <VisualMicroSettings xmlns="">
+      <VisualMicroSettings>
         <arduino.upload.port>COM4</arduino.upload.port>
       </VisualMicroSettings>
     </VisualMicroSettings>
@@ -233,7 +233,7 @@
     </ToolchainSettings>
     <VMSETTING_IncludePaths>c:/Program Files (x86)/Arduino/hardware/arduino/avr/cores/arduino;c:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/standard;../../main;c:/Program Files (x86)/Arduino/libraries;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries;C:/Program Files (x86)/Visual Micro/Visual Micro for Arduino/Micro Platforms/default/debuggers;c:/Users/skobls/Documents/Arduino/libraries;c:/Program Files (x86)/Arduino/hardware/tools/avr/avr/include/;c:/Program Files (x86)/Arduino/hardware/tools/avr//avr/include/avr/;c:/Program Files (x86)/Arduino/hardware/tools/avr/lib/gcc/avr/4.8.1/include;c:/Users/skobls/Documents/Arduino/libraries/digitalWriteFast;c:/Users/skobls/Documents/Arduino/libraries/digitalWriteFast/utility;c:/Users/skobls/Documents/Arduino/libraries/GraphicsLib;c:/Users/skobls/Documents/Arduino/libraries/GraphicsLib/utility;c:/Users/skobls/Documents/Arduino/libraries/MI0283QT2;c:/Users/skobls/Documents/Arduino/libraries/MI0283QT2/utility;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI;c:/Program Files (x86)/Arduino/hardware/arduino/avr/libraries/SPI/utility;c:/Program Files (x86)/Arduino/hardware/arduino/avr/variants/mega;</VMSETTING_IncludePaths>
     <VisualMicroSettings>
-      <VisualMicroSettings xmlns="">
+      <VisualMicroSettings>
         <arduino.upload.port>COM4</arduino.upload.port>
       </VisualMicroSettings>
     </VisualMicroSettings>

@@ -19,7 +19,7 @@ extern MI0283QT2 Display;// should be defined elsewhere, probably in `main.ino`
 TimeBarClass::TimeBarClass()
     :Widget(TBAR_XPOS,TBAR_YPOS,TBAR_WIDTH,TBAR_HEIGHT),
      _Tl(0,0),
-     _Tr(10,0)
+     _Tr(2,5)
 {}
 
 void TimeBarClass::refresh(void)

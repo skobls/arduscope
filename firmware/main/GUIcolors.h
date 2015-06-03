@@ -14,6 +14,7 @@
 #define GUI_TEXT        RGB(255,255,0)  // yellow
 #define GUI_PLOT_BG     RGB(0,0,0)      // black
 #define GUI_PLOT_GRID   RGB(255,255,0)  // yellow
+#define GUI_PLOT_DATA   RGB(255,0,0)    // red
 
 
 #endif /* GUICOLORS_H_ */

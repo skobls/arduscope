@@ -25,7 +25,7 @@
 #define BUTTONFSM_H_
 #include <stdint.h>
 
-#define BUTTON_FSM_LONGPRESS
+//#define BUTTON_FSM_LONGPRESS
 //#define BUTTON_FSM_REPEATITIONS
 //#define BUTTON_SOFTWARE_TIMINGS
 

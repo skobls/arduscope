@@ -10,14 +10,20 @@
 #endif
 
 #include "Widget.h"
+#include "ButtonFSM.h"
 
 class PlotSpaceClass : public Widget
 {
  public:
-	PlotSpaceClass(void);
+	PlotSpaceClass(EventHandler _on_press=EMPTY_EventHandler);
     void refresh();
-    void onTouchpanelEvent(touchpanelEvent_t &e){};
+    void clear();
+    void onTouchpanelEvent(touchpanelEvent_t &e);
+    void addDataPoint(uint16_t data);
  private:
+    EventHandler onScreenFull;
+    uint16_t cursor_position;
+    ButtonFSM btn;
     void drawVerticalGridline(uint16_t xpos);
     void drawHorizontalGridline(uint16_t ypos);
 };
