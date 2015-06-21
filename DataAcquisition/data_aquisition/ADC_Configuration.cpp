@@ -104,7 +104,7 @@ void ADC_ConfigurationClass::Stop_Conversion()
 	if (mode == FREE_RUNING_INTERRUPT_MODE)
 		ADCSRA &=~(1<<ADSC);
 	else if (mode == FREE_RUNING_AUTO_TRIGGER_MODE)
-		TCCR1B |= ((1<<CS12));
+		TCCR1B &= ((~(1<<CS12)) & (~(1<<CS11)) & (~(1<<CS10)) );
 	
 }
 
