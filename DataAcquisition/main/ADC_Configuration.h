@@ -132,7 +132,7 @@ enum TIMER_PRESCALER : uint8_t {
 	EXT_CLK_RISE
 	};
 
-class ADC_ConfigurationClass
+class ADC_Configuration
 {
  public:
 	
@@ -170,13 +170,14 @@ class ADC_ConfigurationClass
 	void Start_Conversion();		// start and stop is  for intrerrupt mode and auto triger
 	void Stop_Conversion();			//
 	uint16_t readValue (uint8_t); //just for single shote mode
+	ADC_Configuration();
 	
 	//read functions
 };
 
 
 
-extern ADC_ConfigurationClass ADC_Configuration;
+//extern ADC_Configuration ADC_Configuration;
 
 
 void ADC_Enable();

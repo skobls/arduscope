@@ -81,7 +81,7 @@ const uint8_t d_in[3] = {24,23,22}; // digital inputs of ARDUINO MEGA 2560, wire
 Widget* activeWidgets[] = {&foo,&TBar,&VBar,&PSpace};
 #define N_Widgets (sizeof(activeWidgets)/sizeof(Widget*))
 
-ADC_ConfigurationClass inst1;
+ADC_Configuration inst1;
 
 void setup()
 {
@@ -103,7 +103,6 @@ void setup()
 	}
     show_input_channel();
 	//ADC_Enable();
-	inst1.init();
 	//inst1.change_mode(FREE_RUNING_AUTO_TRIGGER_MODE);
 	//inst1.Start_Conversion();
 }

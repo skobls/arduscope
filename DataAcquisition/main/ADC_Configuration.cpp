@@ -5,7 +5,7 @@
 #include "ADC_Configuration.h"
 
 
-void ADC_ConfigurationClass::init()
+ADC_Configuration::ADC_Configuration(void)
 {
 	input_chanel = CHANEL_0;
 	voltage_referance = AVCC;
@@ -27,21 +27,21 @@ void ADC_ConfigurationClass::init()
 	change_mode();
 }
 
-void ADC_ConfigurationClass::configure_single_shot()
+void ADC_Configuration::configure_single_shot()
 {
 	
 	ADMUX |= ((input_chanel) | (voltage_referance << REFS0) | (result_adj_left << ADLAR));
 	ADCSRA |= ((prescalar_selection << ADPS0));
 }
 
-void ADC_ConfigurationClass::configure_freerun_intrerrupt_mode()
+void ADC_Configuration::configure_freerun_intrerrupt_mode()
 {
 	
 	ADMUX |= ((input_chanel) | (voltage_referance << REFS0) | (result_adj_left << ADLAR));
 	ADCSRA |= ((prescalar_selection << ADPS0) | (interrupt_enable << ADIE) | (auto_trg_enable << ADATE));
 }
 
-void ADC_ConfigurationClass::configure_freerun_auto_trigger_mode()
+void ADC_Configuration::configure_freerun_auto_trigger_mode()
 {
 	
 	cli();
@@ -59,7 +59,7 @@ void ADC_ConfigurationClass::configure_freerun_auto_trigger_mode()
 	
 }
 
-void ADC_ConfigurationClass::reset_register()
+void ADC_Configuration::reset_register()
 {
 	ADMUX = 0x00;
 	ADCSRA = 0x80;
@@ -70,7 +70,7 @@ void ADC_ConfigurationClass::reset_register()
 	
 }
 
-void ADC_ConfigurationClass::change_mode()
+void ADC_Configuration::change_mode()
 {
 	if (mode == SINGLE_SHOT_MODE)
 	{
@@ -90,7 +90,7 @@ void ADC_ConfigurationClass::change_mode()
 	
 }
 
-void ADC_ConfigurationClass::Start_Conversion()
+void ADC_Configuration::Start_Conversion()
 {
 	if (mode == FREE_RUNING_INTERRUPT_MODE)
 		ADCSRA |= (1<<ADSC);
@@ -101,7 +101,7 @@ void ADC_ConfigurationClass::Start_Conversion()
 	
 }
 
-void ADC_ConfigurationClass::Stop_Conversion()
+void ADC_Configuration::Stop_Conversion()
 {
 	if (mode == FREE_RUNING_INTERRUPT_MODE)
 		ADCSRA &=~(1<<ADSC);
@@ -110,7 +110,7 @@ void ADC_ConfigurationClass::Stop_Conversion()
 	
 }
 
-uint16_t ADC_ConfigurationClass::readValue(uint8_t chanel )
+uint16_t ADC_Configuration::readValue(uint8_t chanel )
 {
 	
 	ADMUX &= ((~(1<<MUX0)) & (~(1<<MUX1)) & (~(1<<MUX2)) & (~(1<<MUX3))& (~(1<<MUX4)));
@@ -121,7 +121,7 @@ uint16_t ADC_ConfigurationClass::readValue(uint8_t chanel )
 	
 }
 
-ADC_ConfigurationClass ADC_Configuration;
+
 
 
 void ADC_Enable()
