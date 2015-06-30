@@ -66,11 +66,32 @@ GuiButton foo(0,200,6*8,40, "clear",
 //GuiButton foo(100,100,50,60, "Button1",on_foo_press);
 
 // this is not the best way to implement it, but...
+
 void show_input_channel(void){
-    char buf[5];
-    sprintf(buf,"CH%d",ain);
-    Display.drawText(10,50,buf,ch_colors[ain],0x0000,1);
+   
+	if (bit_is_set(analogChannelEnabled_flags, 0))
+	{
+		Display.drawText(10,50,"CH0",ch_colors[0],0x0000,1);
+	}
+	else 
+		Display.drawText(10,50,"   ",ch_colors[0],0x0000,1);
+		
+	if (bit_is_set(analogChannelEnabled_flags, 1))
+	{
+		Display.drawText(10,60,"CH1",ch_colors[1],0x0000,1);
+	}
+	else
+		Display.drawText(10,60,"   ",ch_colors[1],0x0000,1);
+	
+	if (bit_is_set(analogChannelEnabled_flags, 2))
+	{
+		Display.drawText(10,70,"CH2",ch_colors[2],0x0000,1);
+	}
+	else
+		Display.drawText(10,70,"   ",ch_colors[2],0x0000,1);
+    
 }
+
 
 /*
 ButtonFSM dangerShield_buttons[3] = {
@@ -80,9 +101,9 @@ ButtonFSM dangerShield_buttons[3] = {
 };
 */
 ButtonFSM dangerShield_buttons[3] = {
-	ButtonFSM([](void) -> void {analogChannelEnabled_flags ^= ain_ch0;}),
-	ButtonFSM([](void) -> void {analogChannelEnabled_flags ^= ain_ch1;}),
-	ButtonFSM([](void) -> void {analogChannelEnabled_flags ^= ain_ch2;})
+	ButtonFSM([](void) -> void {analogChannelEnabled_flags ^= ain_ch0;show_input_channel();PSpace.clear();}),
+	ButtonFSM([](void) -> void {analogChannelEnabled_flags ^= ain_ch1;show_input_channel();PSpace.clear();}),
+	ButtonFSM([](void) -> void {analogChannelEnabled_flags ^= ain_ch2;show_input_channel();PSpace.clear();})
 };
 const uint8_t d_in[3] = {24,23,22}; // digital inputs of ARDUINO MEGA 2560, wired to the `danger shield` buttons
                                     // depend on actual wiring

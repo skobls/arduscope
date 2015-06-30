@@ -7,7 +7,7 @@
 
 #include <MI0283QT2.h>
 extern MI0283QT2 Display; // should be defined elsewhere, probably in `main.ino`
-
+extern uint8_t analogChannelEnabled_flags;
 
 
  PlotSpaceClass::PlotSpaceClass(EventHandler _on_press/*=EMPTY_EventHandler*/):
@@ -79,12 +79,14 @@ void PlotSpaceClass::addDataPoint(uint16_t data0,uint16_t color0, uint16_t data1
 		Display.drawPixel(left+cursor_position,height - 4 - interpolatedData2,color2);
 		
 	}
-	  
-   
-    
 	
-	
-	cursor_position++;
+	if (analogChannelEnabled_flags == 0)
+	{
+		cursor_position = 0;
+	}
+	else
+		cursor_position++;
+		
     if (cursor_position>width)
     {
         CALL_IF_NONEMPTY(onScreenFull);
