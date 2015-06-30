@@ -61,14 +61,29 @@ void PlotSpaceClass::addDataPoint(uint16_t data0,uint16_t color0, uint16_t data1
     {   clear();    }        
     
     // TODO: data interpolation should be here:
-    uint32_t interpolatedData0 = (((uint32_t)data0)*192)/1024;
-	uint32_t interpolatedData1 = (((uint32_t)data1)*192)/1024;
-	uint32_t interpolatedData2 = (((uint32_t)data2)*192)/1024;
+    if (data0  < 1025 )
+    {
+		uint32_t interpolatedData0 = (((uint32_t)data0)*192)/1024;
+		Display.drawPixel(left+cursor_position,height - 4 - interpolatedData0,color0);
+    }
+	
+	if (data1  < 1025 )
+	{
+		uint32_t interpolatedData1 = (((uint32_t)data1)*192)/1024;
+		Display.drawPixel(left+cursor_position,height - 4 - interpolatedData1,color1);
+	}
+	
+	if (data2  < 1025 )
+	{
+		uint32_t interpolatedData2 = (((uint32_t)data2)*192)/1024;
+		Display.drawPixel(left+cursor_position,height - 4 - interpolatedData2,color2);
+		
+	}
+	  
+   
     
-    
-    Display.drawPixel(left+cursor_position,height - 4 - interpolatedData0,color0);
-	Display.drawPixel(left+cursor_position,height - 4 - interpolatedData1,color1);
-	Display.drawPixel(left+cursor_position,height - 4 - interpolatedData2,color2);
+	
+	
 	cursor_position++;
     if (cursor_position>width)
     {

@@ -4,6 +4,7 @@
 
 #include "ADC_Configuration.h"
 
+extern uint8_t analogChannelEnabled_flags;
 
 ADC_Configuration::ADC_Configuration(void)
 {
@@ -112,12 +113,16 @@ void ADC_Configuration::Stop_Conversion()
 
 uint16_t ADC_Configuration::readValue(uint8_t chanel )
 {
+	if ( bit_is_set(analogChannelEnabled_flags,chanel) )
+	{
+		ADMUX &= ((~(1<<MUX0)) & (~(1<<MUX1)) & (~(1<<MUX2)) & (~(1<<MUX3))& (~(1<<MUX4)));
+		ADMUX |= (chanel<<MUX0);
+		ADCSRA |= (1<<ADSC);
+		while (bit_is_set(ADCSRA, ADSC));
+		return ADC;
+	}
+	else return 65535;
 	
-	ADMUX &= ((~(1<<MUX0)) & (~(1<<MUX1)) & (~(1<<MUX2)) & (~(1<<MUX3))& (~(1<<MUX4)));
-	ADMUX |= (chanel<<MUX0);
-	ADCSRA |= (1<<ADSC);
-	while (bit_is_set(ADCSRA, ADSC));
-	return ADC;
 	
 }
 

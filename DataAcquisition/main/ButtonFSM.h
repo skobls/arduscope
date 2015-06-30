@@ -87,4 +87,10 @@ class ButtonFSM {
         ); 
 };
 
+enum AIN_flags : uint8_t {
+	ain_ch0 = 1,
+	ain_ch1 = 2,
+	ain_ch2 = 4
+};
+
 #endif /* BUTTONFSM_H_ */

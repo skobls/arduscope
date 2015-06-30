@@ -5,8 +5,12 @@
 #include <SPI.h>
 #include "ADC_Configuration.h"
 
+
+
 volatile bool ch_activation[3] = {false};
 	uint8_t last_ch = 0;
+
+uint8_t analogChannelEnabled_flags = 0x07;
 
 #include <MI0283QT2.h>
 MI0283QT2 Display; // this global object is used in many other classes. make sure it is present and it is called `Display`
@@ -68,10 +72,17 @@ void show_input_channel(void){
     Display.drawText(10,50,buf,ch_colors[ain],0x0000,1);
 }
 
+/*
 ButtonFSM dangerShield_buttons[3] = {
     ButtonFSM([](void) -> void {ain = 0;show_input_channel();}),
     ButtonFSM([](void) -> void {ain = 1;show_input_channel();}),
     ButtonFSM([](void) -> void {ain = 2;show_input_channel();})
+};
+*/
+ButtonFSM dangerShield_buttons[3] = {
+	ButtonFSM([](void) -> void {analogChannelEnabled_flags ^= ain_ch0;}),
+	ButtonFSM([](void) -> void {analogChannelEnabled_flags ^= ain_ch1;}),
+	ButtonFSM([](void) -> void {analogChannelEnabled_flags ^= ain_ch2;})
 };
 const uint8_t d_in[3] = {24,23,22}; // digital inputs of ARDUINO MEGA 2560, wired to the `danger shield` buttons
                                     // depend on actual wiring
@@ -141,7 +152,9 @@ void loop()
         case OneShot:
         case Running:
         //PSpace.addDataPoint(digitalRead(d_in[0]));
-		PSpace.addDataPoint(inst1.readValue(0),ch_colors[0],inst1.readValue(1),ch_colors[1],inst1.readValue(2),ch_colors[2]);
+		PSpace.addDataPoint(inst1.readValue(0),ch_colors[0],
+							inst1.readValue(1),ch_colors[1],
+							inst1.readValue(2),ch_colors[2]);
 		/*
         if ( ch_activation[0] == true)
         {
